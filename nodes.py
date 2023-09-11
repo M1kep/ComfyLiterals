@@ -87,14 +87,15 @@ class CheckpointListLiteral:
             },
         }
 
-    RETURN_TYPES = (folder_paths.get_filename_list("checkpoints"),)
+    # RETURN_TYPES = (folder_paths.get_filename_list("checkpoints"),)
+    RETURN_TYPES = (any,)
     RETURN_NAMES = ("Selected Checkpoints",)
     OUTPUT_IS_LIST = (True,)
     FUNCTION = "parse_literal"
 
     # OUTPUT_NODE = False
 
-    CATEGORY = "List Stuff"
+    CATEGORY = "Literals"
 
     def parse_literal(self, literal):
         split = list(filter(None, literal.split("\n")))
