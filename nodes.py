@@ -1,6 +1,13 @@
 import folder_paths
 
+# Hack: string type that is always equal in not equal comparisons
+class AnyType(str):
+    def __ne__(self, __value: object) -> bool:
+        return False
 
+
+# Our any instance wants to be a wildcard string
+ANY = AnyType("*")
 class IntLiteral:
     def __init__(self, ):
         pass
@@ -87,7 +94,7 @@ class CheckpointListLiteral:
             },
         }
 
-    RETURN_TYPES = (folder_paths.get_filename_list("checkpoints"),)
+    RETURN_TYPES = (ANY,)
     RETURN_NAMES = ("Selected Checkpoints",)
     OUTPUT_IS_LIST = (True,)
     FUNCTION = "parse_literal"
