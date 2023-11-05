@@ -106,3 +106,31 @@ class CheckpointListLiteral:
     def parse_literal(self, literal):
         split = list(filter(None, literal.split("\n")))
         return (split,)
+
+class LoraListLiteral:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "literal": ("STRING", {
+                    "multiline": True,
+                    "default": "\n".join(folder_paths.get_filename_list("loras"))
+                }),
+            },
+        }
+
+    RETURN_TYPES = (ANY,)
+    RETURN_NAMES = ("Selected Loras",)
+    OUTPUT_IS_LIST = (True,)
+    FUNCTION = "parse_literal"
+
+    # OUTPUT_NODE = False
+
+    CATEGORY = "List Stuff"
+
+    def parse_literal(self, literal):
+        split = list(filter(None, literal.split("\n")))
+        return (split,)
