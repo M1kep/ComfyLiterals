@@ -66,7 +66,7 @@ class StringLiteral:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "String": ("STRING", {}),
+                "String": ("STRING", {"multiline": True}),
             }
         }
 
